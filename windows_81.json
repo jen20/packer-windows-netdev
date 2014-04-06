@@ -1,0 +1,84 @@
+{
+    "builders": [
+        {
+            "type": "vmware-iso",
+            "iso_url": "./iso/en_windows_8_1_pro_vl_x64_dvd_2971948.iso",
+            "iso_checksum_type": "md5",
+            "iso_checksum": "f9ac831f06a760c722df0df34f1b9397",
+            "headless": false,
+            "boot_wait": "2m",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "ssh_wait_timeout": "2h",
+            "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+            "guest_os_type": "windows8srv-64",
+            "tools_upload_flavor": "windows",
+            "disk_size": 61440,
+            "vnc_port_min": 5900,
+            "vnc_port_max": 5980,
+            "floppy_files": [
+                "./answer_files/81/Autounattend.xml",
+                "./scripts/win-updates.ps1",
+                "./scripts/openssh.ps1"
+            ],
+            "vmx_data": {
+                "RemoteDisplay.vnc.enabled": "false",
+                "RemoteDisplay.vnc.port": "5900",
+                "memsize": "2048",
+                "numvcpus": "2",
+                "scsi0.virtualDev": "lsisas1068"
+            }
+        },
+        {
+            "type": "virtualbox-iso",
+            "iso_url": "./iso/en_windows_8_1_pro_vl_x64_dvd_2971948.iso",
+            "iso_checksum_type": "md5",
+            "iso_checksum": "f9ac831f06a760c722df0df34f1b9397",
+            "headless": false,
+            "boot_wait": "2m",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "ssh_wait_timeout": "2h",
+            "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+            "guest_os_type": "Windows2012_64",
+            "disk_size": 61440,
+            "floppy_files": [
+                "./answer_files/81/Autounattend.xml",
+                "./scripts/win-updates.ps1",
+                "./scripts/openssh.ps1",
+                "./scripts/oracle-cert.cer"
+            ],
+            "vboxmanage": [
+                ["modifyvm", "{{.Name}}", "--memory", "2048"],
+                ["modifyvm", "{{.Name}}", "--cpus", "2"]
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "remote_path": "/tmp/script.bat",
+            "execute_command": "{{.Vars}} cmd /c C:/Windows/Temp/script.bat",
+            "scripts": [
+                "./scripts/vm-guest-tools.bat",
+                "./scripts/vagrant-ssh.bat"
+            ]
+        },
+        {
+            "type": "shell", "inline": ["rm -rf /tmp/*"]
+        },
+        {
+            "type": "file",
+            "source": "iso/en_visual_studio_premium_2013_x86_dvd_3175275.iso",
+            "destination": "en_visual_studio_premium_2013_x86_dvd_3175275.iso"
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "keep_input_artifact": false,
+            "output": "windows_81_{{.Provider}}.box",
+            "vagrantfile_template": "vagrantfile-windows_81.template"
+        }
+    ]
+}
