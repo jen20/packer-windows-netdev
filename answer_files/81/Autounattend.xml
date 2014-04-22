@@ -58,10 +58,10 @@
                 <UILanguage>en-US</UILanguage>
             </SetupUILanguage>
             <InputLocale>en-US</InputLocale>
-            <SystemLocale>en-US</SystemLocale>
-            <UILanguage>en-US</UILanguage>
+            <SystemLocale>en-GB</SystemLocale>
+            <UILanguage>en-GB</UILanguage>
             <UILanguageFallback>en-US</UILanguageFallback>
-            <UserLocale>en-US</UserLocale>
+            <UserLocale>en-GB</UserLocale>
         </component>
     </settings>
     <settings pass="offlineServicing">
@@ -264,8 +264,8 @@
                 <HelpCustomized>false</HelpCustomized>
             </OEMInformation>
             <!-- Rename computer here. -->
-            <ComputerName>vagrant-2012</ComputerName>
-            <TimeZone>Pacific Standard Time</TimeZone>
+            <ComputerName>net-dev-vm</ComputerName>
+            <TimeZone>Greenwich Standard Time</TimeZone>
             <RegisteredOwner/>
         </component>
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Security-SPP-UX" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
