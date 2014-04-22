@@ -59,7 +59,7 @@
             </SetupUILanguage>
             <InputLocale>en-US</InputLocale>
             <SystemLocale>en-GB</SystemLocale>
-            <UILanguage>en-GB</UILanguage>
+            <UILanguage>en-US</UILanguage>
             <UILanguageFallback>en-US</UILanguageFallback>
             <UserLocale>en-GB</UserLocale>
         </component>
