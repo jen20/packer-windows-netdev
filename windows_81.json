@@ -49,6 +49,11 @@
             "type": "file",
             "source": "iso/en_visual_studio_premium_2013_x86_dvd_3175275.iso",
             "destination": "en_visual_studio_premium_2013_x86_dvd_3175275.iso"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install-visual-studio.ps1",
+            "execute_command": "powershell -File {{ .PATH }}"
         }
     ],
     "post-processors": [
