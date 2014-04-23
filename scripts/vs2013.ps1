@@ -11,10 +11,20 @@ Start-Process -FilePath $installPath -ArgumentList "/adminfile A:\AdminDeploymen
 Dismount-DiskImage -ImagePath $isoPath
 Remove-Item -Force -Path $isoPath 
 
+#Set sane defaults for Visual Studio and skip the first run wizard.
+#If it's not done in 60 seconds, then seriously WTF.
+$settingsPath = "C:\Users\vagrant\Sane.vssettings"
 $devenvPath = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe"
-Start-Process -FilePath $devenvPath -ArgumentList "/ResetSettings A:\VSSaneDefaults.vssettings /Command File.Exit" -NoNewWindow -Wait
+$process = Start-Process -FilePath $devenvPath -ArgumentList "/ResetSettings $settingsPath /Command File.Exit" -NoNewWindow -PassThru
+if ( ! $process.WaitForExit(60000) ) {
+    $process.Kill()
+}
 
+#Install the "Hide Main Menu" extension
 $vsixInstallerPath = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\VSIXInstaller.exe"
-$extensionPath = "A:\HideMenu.vsix"
+$extensionPath = "c:\users\vagrant\HideMenu.vsix"
 Start-Process -FilePath $vsixInstallerPath -ArgumentList "/q $extensionPath" -NoNewWindow -Wait
+Remove-Item -Force -Path $extensionPath
 
+#Make the menu less disgusting even though we hid it
+Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name SuppressUppercaseConversion -Type DWord -Value 1

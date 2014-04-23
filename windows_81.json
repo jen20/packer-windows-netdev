@@ -20,8 +20,7 @@
                 "./answer_files/81/Autounattend.xml",
                 "./scripts/win-updates.ps1",
                 "./scripts/openssh.ps1",
-                "./answer_files/vs/AdminDeployment.xml",
-                "./iso/HideMenu.vsix"
+                "./answer_files/vs/AdminDeployment.xml"
             ],
             "vmx_data": {
                 "RemoteDisplay.vnc.enabled": "false",
@@ -51,17 +50,20 @@
             "destination": "en_visual_studio_premium_2013_x86_dvd_3175275.iso"
         },
         {
-            "type": "shell",
-            "script": "scripts/install-visual-studio.ps1",
-            "execute_command": "powershell -File {{ .Path }}"
-        }
-    ],
-    "post-processors": [
+            "type": "file",
+            "source": "./iso/HideMenu.vsix",
+            "destination": "HideMenu.vsix"
+        },
         {
-            "type": "vagrant",
-            "keep_input_artifact": false,
-            "output": "dotnet_dev_{{.Provider}}.box",
-            "vagrantfile_template": "vagrantfile-windows_81.template"
+            "type": "file",
+            "source": "./configs/Sane.vssettings",
+            "destination": "Sane.vssettings"
+        },
+        {
+            "type": "shell",
+            "remote_path": "/tmp/vs2013.ps1",
+            "script": "scripts/vs2013.ps1",
+            "execute_command": "powershell -File c:/windows/temp/vs2013.ps1"
         }
     ]
 }
