@@ -53,7 +53,7 @@
         {
             "type": "shell",
             "script": "scripts/install-visual-studio.ps1",
-            "execute_command": "powershell -File {{ .PATH }}"
+            "execute_command": "powershell -File {{ .Path }}"
         }
     ],
     "post-processors": [
