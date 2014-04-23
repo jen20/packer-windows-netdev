@@ -19,7 +19,9 @@
             "floppy_files": [
                 "./answer_files/81/Autounattend.xml",
                 "./scripts/win-updates.ps1",
-                "./scripts/openssh.ps1"
+                "./scripts/openssh.ps1",
+                "./answer_files/vs/AdminDeployment.xml",
+                "./iso/HideMenu.vsix"
             ],
             "vmx_data": {
                 "RemoteDisplay.vnc.enabled": "false",
