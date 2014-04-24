@@ -70,5 +70,13 @@
             "script": "scripts/vs2013.ps1",
             "execute_command": "powershell -File c:/windows/temp/vs2013.ps1"
         }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "keep_input_artifact": false,
+            "output": "net_dev_{{.Provider}}.box",
+            "vagrantfile_template": "vagrantfile-windows_81.template"
+        }
     ]
 }
