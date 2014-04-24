@@ -51,6 +51,11 @@
         },
         {
             "type": "file",
+            "source": "iso/ReSharperSetup.8.2.0.2160.msi",
+            "destination": "ReSharperSetup.8.2.0.2160.msi"
+        },
+        {
+            "type": "file",
             "source": "./iso/HideMenu.vsix",
             "destination": "HideMenu.vsix"
         },
