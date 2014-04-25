@@ -11,3 +11,6 @@ $dir = $shell.NameSpace($fontPath)
 Get-ChildItem -Path $fontPath -filter "*.ttf" | ForEach {
     $dir.ParseName($_.Name).InvokeVerb("Install")
 }
+
+Remove-Item -Force "C:\Users\vagrant\SourceCodePro_FontsOnly-1.017.zip"
+Remove-Item -Recurse -Force "C:\Users\vagrant\SourceCodePro_FontsOnly-1.017"

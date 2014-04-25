@@ -61,6 +61,11 @@
         },
         {
             "type": "file",
+            "source": "./iso/SourceCodePro_FontsOnly-1.017.zip",
+            "destination": "SourceCodePro_FontsOnly-1.017.zip"
+        },
+        {
+            "type": "file",
             "source": "./configs/Sane.vssettings",
             "destination": "Sane.vssettings"
         },
