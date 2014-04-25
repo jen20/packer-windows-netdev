@@ -43,4 +43,12 @@ Vagrant.configure("2") do |config|
         config.vm.provision "shell",
             inline: 'del c:\Users\vagrant\resharper.reg'
     end
+
+    $git_user = `git config user.name`
+    config.vm.provision "shell",
+        inline: "git config --global user.name #$git_user"
+
+    $git_email = `git config user.email`
+    config.vm.provision "shell",
+        inline: "git config --global user.email #$git_email"
 end

@@ -8,6 +8,16 @@ Dismount-DiskImage -ImagePath $isoPath
 Remove-Item -Force -Path $isoPath 
 
 
+Write-Host "Installing Visual Studio Update 1"
+$isoPath = "C:\Users\vagrant\VS2013.1.iso"
+$rc = Mount-DiskImage -PassThru -ImagePath $isoPath
+$driveLetter = ($rc | Get-Volume).DriveLetter
+$installPath = Join-Path "${driveLetter}:" "VS2013.1.exe"
+Start-Process -FilePath $installPath -ArgumentList "/quiet /norestart" -NoNewWindow -Wait
+Dismount-DiskImage -ImagePath $isoPath
+Remove-Item -Force -Path $isoPath
+
+
 Write-Host "Installing Resharper"
 $resharperInstallerPath = "C:\Users\vagrant\ReSharperSetup.8.2.0.2160.msi"
 Start-Process -FilePath $resharperInstallerPath -ArgumentList "/qn" -Wait
@@ -19,17 +29,6 @@ $vsixInstallerPath = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common
 $extensionPath = "c:\users\vagrant\HideMenu.vsix"
 Start-Process -FilePath $vsixInstallerPath -ArgumentList "/q $extensionPath" -NoNewWindow -Wait
 Remove-Item -Force -Path $extensionPath
-
-
-Write-Host "Importing some sensible defaults to Visual Studio and killing the first run wizard"
-$settingsPath = "C:\Users\vagrant\Sane.vssettings"
-$devenvPath = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe"
-$process = Start-Process -FilePath $devenvPath -ArgumentList "/ResetSettings $settingsPath /Command File.Exit" -NoNewWindow -PassThru
-#If this doesn't complete in 1 minute, then seriously, WTF?
-if ( ! $process.WaitForExit(60000) ) {
-    $process.Kill()
-}
-Remove-Item -Force -Path $settingsPath
 
 
 Write-Host "FIXING THE ALL CAPS MENU IN VISUAL STUDIO"
@@ -49,6 +48,16 @@ $dir = $shell.Namespace("C:\Program Files (x86)\Microsoft Visual Studio 12.0\Com
 $item = $dir.ParseName("devenv.exe")
 $item.InvokeVerb('taskbarpin')
 
+
+Write-Host "Importing some sensible defaults to Visual Studio and killing the first run wizard"
+$settingsPath = "C:\Users\vagrant\Sane.vssettings"
+$devenvPath = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe"
+$process = Start-Process -FilePath $devenvPath -ArgumentList "/ResetSettings $settingsPath /Command File.Exit" -NoNewWindow -PassThru
+#If this doesn't complete in 1 minute, then seriously, WTF?
+if ( ! $process.WaitForExit(60000) ) {
+    $process.Kill()
+}
+Remove-Item -Force -Path $settingsPath
 
 #We register ReSharper in the box VagrantFile instead of here as it's
 # a per user setting which comes from an environment variable.

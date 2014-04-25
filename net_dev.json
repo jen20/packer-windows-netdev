@@ -50,6 +50,11 @@
         },
         {
             "type": "file",
+            "source": "iso/VS2013.1.iso",
+            "destination": "VS2013.1.iso"
+        },
+        {
+            "type": "file",
             "source": "iso/ReSharperSetup.8.2.0.2160.msi",
             "destination": "ReSharperSetup.8.2.0.2160.msi"
         },
@@ -62,6 +67,11 @@
             "type": "file",
             "source": "./iso/SourceCodePro_FontsOnly-1.017.zip",
             "destination": "SourceCodePro_FontsOnly-1.017.zip"
+        },
+        {
+            "type": "file",
+            "source": "./iso/Git-1.9.2-preview20140411.exe",
+            "destination": "Git-1.9.2-preview20140411.exe"
         },
         {
             "type": "file",
@@ -88,6 +98,12 @@
             "remote_path": "/tmp/fonts.ps1",
             "script": "scripts/fonts.ps1",
             "execute_command": "powershell -File c:/windows/temp/fonts.ps1"
+        },
+        {
+            "type": "shell",
+            "remote_path": "/tmp/git.ps1",
+            "script": "scripts/git.ps1",
+            "execute_command": "powershell -File c:/windows/temp/git.ps1"
         },
         {
             "type": "shell",
