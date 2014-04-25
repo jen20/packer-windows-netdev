@@ -1,11 +1,9 @@
+Write-Host "Installing Visual Studio"
 $isoPath = "C:\users\vagrant\en_visual_studio_premium_2013_x86_dvd_3175275.iso"
 $rc = Mount-DiskImage -PassThru -ImagePath $isoPath
 $driveLetter = ($rc | Get-Volume).DriveLetter
-
-Write-Host "Installing Visual Studio"
 $installPath = Join-Path "${driveLetter}:" "vs_premium.exe"
 Start-Process -FilePath $installPath -ArgumentList "/adminfile A:\AdminDeployment.xml /quiet /norestart" -NoNewWindow -Wait
-
 Dismount-DiskImage -ImagePath $isoPath
 Remove-Item -Force -Path $isoPath 
 
