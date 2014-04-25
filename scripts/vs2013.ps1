@@ -30,9 +30,16 @@ $process = Start-Process -FilePath $devenvPath -ArgumentList "/ResetSettings $se
 if ( ! $process.WaitForExit(60000) ) {
     $process.Kill()
 }
+Remove-Item -Force -Path $settingsPath
 
 #Make the menu less disgusting even though we hid it
 Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name SuppressUppercaseConversion -Type DWord -Value 1
 
-#Clean up remaining files
-Remove-Item -Force -Path $settingsPath
+#Move the DotSettings file into place to avoid R# asking about keyboard layout
+$dotSettingsSource = "C:\Users\vagrant\vsActionManager.DotSettings"
+$dotSettingsDestination = "C:\Users\vagrant\AppData\Local\JetBrains\ReSharper\vAny\vs12.0"
+New-Item $dotSettingsDestination -Type directory
+Move-Item -Force -Path $dotSettingsSource -Destination $dotSettingsDestination
+
+#We register ReSharper in the box VagrantFile instead of here as it's
+# a per user setting which comes from an environment variable.

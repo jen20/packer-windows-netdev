@@ -65,6 +65,11 @@
             "destination": "Sane.vssettings"
         },
         {
+            "type": "file",
+            "source": "./configs/vsActionManager.DotSettings",
+            "destination": "vsActionManager.DotSettings"
+        },
+        {
             "type": "shell",
             "remote_path": "/tmp/vs2013.ps1",
             "script": "scripts/vs2013.ps1",
