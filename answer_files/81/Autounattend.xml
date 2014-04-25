@@ -229,6 +229,16 @@
                     <Order>22</Order>
                     <Description>Set higher DPI</Description>
                 </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>%SystemRoot%\System32\reg.exe DELETE HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband /f</CommandLine>
+                    <Order>23</Order>
+                    <Description>Remove pinned items from taskbar (1)</Description>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>cmd.exe /c del /f /s /q /a "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\*"</CommandLine>
+                    <Order>24</Order>
+                    <Description>Remove pinned items from taskbar (2)</Description>
+                </SynchronousCommand>
                 <!-- WITHOUT WINDOWS UPDATES -->
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\openssh.ps1 -AutoStart</CommandLine>
