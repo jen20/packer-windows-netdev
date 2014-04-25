@@ -20,7 +20,6 @@
                 "./answer_files/81/Autounattend.xml",
                 "./scripts/win-updates.ps1",
                 "./scripts/openssh.ps1",
-                "./scripts/unpinall.ps1",
                 "./answer_files/vs/AdminDeployment.xml"
             ],
             "vmx_data": {

@@ -38,6 +38,9 @@ Vagrant.configure("2") do |config|
         end
 
         config.vm.provision "shell",
-            inline: 'reg import c:\Users\vagrant\resharper.reg & del c:\Users\vagrant\resharper.reg'
+            inline: 'reg import c:\Users\vagrant\resharper.reg'
+
+        config.vm.provision "shell",
+            inline: 'del c:\Users\vagrant\resharper.reg'
     end
 end
