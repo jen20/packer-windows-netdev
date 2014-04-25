@@ -38,11 +38,10 @@
             "execute_command": "{{.Vars}} cmd /c C:/Windows/Temp/script.bat",
             "scripts": [
                 "./scripts/vm-guest-tools.bat",
-                "./scripts/vagrant-ssh.bat"
+                "./scripts/vagrant-ssh.bat",
+                "./scripts/dpi.bat",
+                "./scripts/unpinall.bat"
             ]
-        },
-        {
-            "type": "shell", "inline": ["rm -rf /tmp/*"]
         },
         {
             "type": "file",
@@ -66,6 +65,11 @@
         },
         {
             "type": "file",
+            "source": "./iso/ConEmuSetup.140422.exe",
+            "destination": "ConEmuSetup.140422.exe"
+        },
+        {
+            "type": "file",
             "source": "./configs/Sane.vssettings",
             "destination": "Sane.vssettings"
         },
@@ -76,9 +80,24 @@
         },
         {
             "type": "shell",
+            "remote_path": "/tmp/fonts.ps1",
+            "script": "scripts/fonts.ps1",
+            "execute_command": "powershell -File c:/windows/temp/fonts.ps1"
+        },
+        {
+            "type": "shell",
+            "remote_path": "/tmp/conemu.ps1",
+            "script": "scripts/conemu.ps1",
+            "execute_command": "powershell -File c:/windows/temp/conemu.ps1"
+        },
+        {
+            "type": "shell",
             "remote_path": "/tmp/vs2013.ps1",
             "script": "scripts/vs2013.ps1",
             "execute_command": "powershell -File c:/windows/temp/vs2013.ps1"
+        },
+        {
+            "type": "shell", "inline": ["rm -rf /tmp/*"]
         }
     ],
     "post-processors": [
