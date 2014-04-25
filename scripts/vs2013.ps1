@@ -31,10 +31,6 @@ Start-Process -FilePath $vsixInstallerPath -ArgumentList "/q $extensionPath" -No
 Remove-Item -Force -Path $extensionPath
 
 
-Write-Host "FIXING THE ALL CAPS MENU IN VISUAL STUDIO"
-Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name SuppressUppercaseConversion -Type DWord -Value 1
-
-
 Write-Host "Configuring Resharper to use the IntelliJ Keyboard Scheme"
 $dotSettingsSource = "C:\Users\vagrant\vsActionManager.DotSettings"
 $dotSettingsDestination = "C:\Users\vagrant\AppData\Local\JetBrains\ReSharper\vAny\vs12.0"
@@ -58,6 +54,10 @@ if ( ! $process.WaitForExit(60000) ) {
     $process.Kill()
 }
 Remove-Item -Force -Path $settingsPath
+
+
+Write-Host "FIXING THE ALL CAPS MENU IN VISUAL STUDIO"
+Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name SuppressUppercaseConversion -Type DWord -Value 1
 
 #We register ReSharper in the box VagrantFile instead of here as it's
 # a per user setting which comes from an environment variable.
