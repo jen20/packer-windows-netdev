@@ -75,6 +75,11 @@
         },
         {
             "type": "file",
+            "source": "./configs/ConEmu.reg",
+            "destination": "ConEmu.reg"
+        },
+        {
+            "type": "file",
             "source": "./configs/vsActionManager.DotSettings",
             "destination": "vsActionManager.DotSettings"
         },
