@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-    config.vm.define "vagrant-windows-81"
-    config.vm.box = "wnet_dev"
+    config.vm.define "vagrant-net_dev"
+    config.vm.box = "net_dev"
 
     if !Vagrant.has_plugin?('vagrant-windows')
       puts "vagrant-windows missing, please install the vagrant-windows plugin!"

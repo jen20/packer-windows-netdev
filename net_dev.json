@@ -81,7 +81,7 @@
             "type": "vagrant",
             "keep_input_artifact": false,
             "output": "net_dev_{{.Provider}}.box",
-            "vagrantfile_template": "vagrantfile-windows_81.template"
+            "vagrantfile_template": "vagrantfile-net_dev.template"
         }
     ]
 }
