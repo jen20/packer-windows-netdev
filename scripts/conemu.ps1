@@ -3,6 +3,7 @@ $conemuArgs = '/p:x64 /quiet ADDLOCAL="FConEmuGui,FConEmuGui64,ProductFeature,FC
 
 Write-Host "Installing ConEmu"
 Start-Process -FilePath $conemuSetup -ArgumentList $conemuArgs -NoNewWindow -Wait
+Remove-Item -Force -Path $conemuSetup
 
 Write-Host "Installing Sane Defaults for ConEmu"
 $defaultsPath = "C:\Users\vagrant\ConEmu.reg"

@@ -45,10 +45,6 @@ $item = $dir.ParseName("devenv.exe")
 $item.InvokeVerb('taskbarpin')
 
 
-Write-Host "FIXING THE ALL CAPS MENU IN VISUAL STUDIO"
-Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name SuppressUppercaseConversion -Type DWord -Value 1
-
-
 Write-Host "Importing some sensible defaults to Visual Studio and killing the first run wizard"
 $settingsPath = "C:\Users\vagrant\Sane.vssettings"
 $devenvPath = "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe"
@@ -58,6 +54,16 @@ if ( ! $process.WaitForExit(60000) ) {
     $process.Kill()
 }
 Remove-Item -Force -Path $settingsPath
+
+
+Write-Host "FIXING THE ALL CAPS MENU IN VISUAL STUDIO"
+Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name SuppressUppercaseConversion -Type DWord -Value 1
+
+
+Write-Host "Fixing the Visual Studio Start Screen"
+Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name OnEnvironmentStartup -Type DWord -Value 4
+Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name IsDownloadRefreshEnabled -Type DWord -Value 0
+Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name OptIn -Type DWord -Value 0
 
 #We register ReSharper in the box VagrantFile instead of here as it's
 # a per user setting which comes from an environment variable.

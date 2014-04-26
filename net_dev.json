@@ -42,7 +42,8 @@
                 "./scripts/vagrant-ssh.bat",
                 "./scripts/dpi.bat",
                 "./scripts/unpinall.bat",
-                "./scripts/NoStupidHelp.bat"
+                "./scripts/NoStupidHelp.bat",
+                "./scripts/noballoons.bat"
             ]
         },
         {

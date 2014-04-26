@@ -79,7 +79,7 @@ Windows Registry Editor Version 5.00
 "FontName"="Consolas"
 "FontName2"="Source Code Pro Semibold"
 "FontAutoSize"=hex:00
-"FontSize"=dword:00000014
+"FontSize"=dword:0000001c
 "FontSizeX"=dword:00000000
 "FontSizeX2"=dword:00000000
 "FontSizeX3"=dword:00000000
