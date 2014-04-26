@@ -29,7 +29,6 @@
                 "numvcpus": "2",
                 "scsi0.virtualDev": "lsisas1068",
                 "virtualhw.version": "10",
-                "gui.applyHostDisplayScalingToGuest": "false"
             }
         }
     ],
