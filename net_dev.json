@@ -27,7 +27,9 @@
                 "RemoteDisplay.vnc.port": "5900",
                 "memsize": "2048",
                 "numvcpus": "2",
-                "scsi0.virtualDev": "lsisas1068"
+                "scsi0.virtualDev": "lsisas1068",
+                "virtualhw.version": "10",
+                "gui.applyHostDisplayScalingToGuest": "false"
             }
         }
     ],
@@ -40,7 +42,8 @@
                 "./scripts/vm-guest-tools.bat",
                 "./scripts/vagrant-ssh.bat",
                 "./scripts/dpi.bat",
-                "./scripts/unpinall.bat"
+                "./scripts/unpinall.bat",
+                "./scripts/NoStupidHelp.bat"
             ]
         },
         {
