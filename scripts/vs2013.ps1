@@ -60,8 +60,7 @@ Write-Host "FIXING THE ALL CAPS MENU IN VISUAL STUDIO"
 Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name SuppressUppercaseConversion -Type DWord -Value 1
 
 
-Write-Host "Fixing the Visual Studio Start Screen"
-New-Item -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General
+#Write-Host "Fixing the Visual Studio Start Screen"
 New-ItemProperty -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name OnEnvironmentStartup -Type DWord -Value 4
 New-Item -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage
 New-ItemProperty -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name IsDownloadRefreshEnabled -Type DWord -Value 0

@@ -47,8 +47,7 @@
                 "./scripts/vagrant-ssh.bat",
                 "./scripts/dpi.bat",
                 "./scripts/unpinall.bat",
-                "./scripts/NoStupidHelp.bat",
-                "./scripts/noballoons.bat"
+                "./scripts/NoStupidHelp.bat"
             ]
         },
         {
@@ -124,6 +123,13 @@
             "remote_path": "/tmp/vs2013.ps1",
             "script": "scripts/vs2013.ps1",
             "execute_command": "powershell -File c:/windows/temp/vs2013.ps1"
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "shutdown /r /t 5",
+                "timeout /t 15"
+            ]
         },
         {
             "type": "shell", "inline": ["rm -rf /tmp/*"]
