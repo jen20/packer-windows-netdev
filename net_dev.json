@@ -28,7 +28,12 @@
                 "memsize": "2048",
                 "numvcpus": "2",
                 "scsi0.virtualDev": "lsisas1068",
-                "virtualhw.version": "10"
+                "virtualhw.version": "10",
+                "gui.fullScreenAtPowerOn": "TRUE",
+                "gui.viewModeAtPowerOn": "fullscreen",
+                "gui.lastPoweredViewMode": "fullscreen",
+                "gui.fitGuestUsingNativeDisplayResolution": "TRUE",
+                "gui.applyHostDisplayScalingToGuest": "FALSE"
             }
         }
     ],
