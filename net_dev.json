@@ -126,10 +126,9 @@
         },
         {
             "type": "shell",
-            "inline": [
-                "shutdown /r /t 5",
-                "timeout /t 15"
-            ]
+            "remote_path": "/tmp/reboot.bat",
+            "script": "scripts/reboot.bat",
+            "execute_command": "c:/windows/temp/reboot.bat"
         },
         {
             "type": "shell", "inline": ["rm -rf /tmp/*"]
