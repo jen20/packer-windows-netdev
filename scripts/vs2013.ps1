@@ -61,7 +61,9 @@ Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name 
 
 
 Write-Host "Fixing the Visual Studio Start Screen"
+New-Item -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General
 New-ItemProperty -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name OnEnvironmentStartup -Type DWord -Value 4
+New-Item -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage
 New-ItemProperty -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name IsDownloadRefreshEnabled -Type DWord -Value 0
 New-ItemProperty -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name OptIn -Type DWord -Value 0
 
