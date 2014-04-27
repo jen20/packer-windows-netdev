@@ -61,9 +61,9 @@ Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name 
 
 
 Write-Host "Fixing the Visual Studio Start Screen"
-Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name OnEnvironmentStartup -Type DWord -Value 4
-Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name IsDownloadRefreshEnabled -Type DWord -Value 0
-Set-ItemProperty -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name OptIn -Type DWord -Value 0
+New-ItemProperty -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General -Name OnEnvironmentStartup -Type DWord -Value 4
+New-ItemProperty -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name IsDownloadRefreshEnabled -Type DWord -Value 0
+New-ItemProperty -Force -Path HKCU:\Software\Microsoft\VisualStudio\12.0\General\StartPage -Name OptIn -Type DWord -Value 0
 
 #We register ReSharper in the box VagrantFile instead of here as it's
 # a per user setting which comes from an environment variable.
